@@ -62,16 +62,16 @@ $$\text{Latency} = \sqrt{\text{Training Time} \times \text{Testing Time}}$$
 
 | 场景 | 条件说明 | 最终得分 |
 | :--- | :--- | :--- |
-| **未达标** | ROC-AUC < 0.98 | **6 分** |
-| **极速** | AUC ≥ 0.98 且 Score ≤ P10 | **20 分** |
-| **优秀** | AUC ≥ 0.98 且 P10 < Score ≤ 2×P10 | **6 ~ 20 分** |
-| **普通** | AUC ≥ 0.98 且 Score > 2×P10 | **6 分** |
+| **1** | ROC-AUC < 0.98 | **6 分** |
+| **2** | AUC ≥ 0.98 且 Latency ≤ P10 | **20 分** |
+| **3** | AUC ≥ 0.98 且 P10 < Latency ≤ 4×P10 | **6 ~ 20 分** |
+| **4** | AUC ≥ 0.98 且 Latency > 4×P10 | **6 分** |
 
 #### 🧮 线性插值公式
-当你的速度处于 *优秀* 区间 ($P10 < Score \le 2 \times P10$) 时，得分计算如下：
+当你的速度处于 *2* 区间 ($P10 < Latency \le 2 \times P10$) 时，得分计算如下：
 
 $$
-\text{Total Score} = 6 + 14 \times \left( 1 - \frac{\text{Score} - P10}{P10} \right)
+\text{Total Score} = 6 + 14 \times \left( 1 - \frac{\text{Latency} - P10}{P10} \right)
 $$
 
 > **💡 策略提示**：
