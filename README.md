@@ -1,7 +1,7 @@
 
 # Assignment 3: 网络入侵检测分类任务 (XGBoost)
 
-[![Python](https://img.shields.io/badge/Python-3.8-blue.svg)](https://www.python.org/) [![Deadline](https://img.shields.io/badge/Deadline-Dec%2015-red.svg)](http://172.23.166.133:3000/) [![License](https://img.shields.io/badge/License-Educational-green.svg)](https://www.guangmingai.com/chat/LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.8-blue.svg)](https://www.python.org/) [![License](https://img.shields.io/badge/License-Educational-green.svg)](https://www.guangmingai.com/chat/LICENSE)
 
 **📅 截止日期：11月30日** | **🏆 [查看实时排行榜](http://101.132.193.95:3000/)**
 
@@ -13,7 +13,7 @@
 
 ### 🎯 核心挑战
 1.  **算法实现**：从零实现梯度提升 (Gradient Boosting) 算法逻辑。
-2.  **精度达标**：模型 ROC-AUC 必须达到 **0.99** 以上。
+2.  **精度达标**：模型 ROC-AUC 必须达到 **0.98** 以上。
 3.  **工程优化**：在保证高精度的前提下，通过并行化、算法剪枝等手段极致优化 **训练与推理速度**。
 
 ### 📤 强制提交要求:
@@ -38,16 +38,16 @@
 * **✨ 适配 Solution 接口**
     * 修改 `solution.py`，确保 `fit` 和 `forward` 能正确驱动你的 XGBoost 模型。
 * **✨ 性能调优 (关键)**
-    * 确保 **ROC-AUC ≥ 0.99**。
+    * 确保 **ROC-AUC ≥ 0.98**。
     * 应用并行计算、直方图优化等技巧，缩短训练和推理时间以获取高分。
 * **✨ 提交与冲榜**
-    * 运行 `evaluate.py` 进行测试和自动提交。
+    * 运行 `evaluate-linux` 进行测试和自动提交。
 
 ---
 
 ## 📈 评分标准 (总分 20分)
 
-本次作业总分为 20 分。评分核心逻辑是：**在满足精度门槛 (AUC ≥ 0.99) 的前提下，根据运行效率 (Latency) 动态定分**。
+本次作业总分为 20 分。评分核心逻辑是：**在满足精度门槛 (AUC ≥ 0.98) 的前提下，根据运行效率 (Latency) 动态定分**。
 
 ### 1️⃣ Latency 计算方式
 为了综合考量算法的训练效率与线上推理能力，**Latency** 定义为训练时间和测试时间的**几何平均数**（越低越好）：
@@ -58,14 +58,14 @@ $$\text{Latency} = \sqrt{\text{Training Time} \times \text{Testing Time}}$$
 * **Testing Time**: 完成所有测试样本 `forward()` 推理的总时间。
 
 ### 2️⃣ 详细得分规则
-我们将统计所有 **达标 (AUC≥0.99)** 提交的 Latency，计算出 **前10%分位数 (P10)** 作为满分基准线。
+我们将统计所有 **达标 (AUC≥0.98)** 提交的 Latency，计算出 **前10%分位数 (P10)** 作为满分基准线。
 
 | 场景 | 条件说明 | 最终得分 |
 | :--- | :--- | :--- |
-| **未达标** | ROC-AUC < 0.99 | **6 分** |
-| **极速** | AUC ≥ 0.99 且 Score ≤ P10 | **20 分** |
-| **优秀** | AUC ≥ 0.99 且 P10 < Score ≤ 2×P10 | **6 ~ 20 分** |
-| **普通** | AUC ≥ 0.99 且 Score > 2×P10 | **6 分** |
+| **未达标** | ROC-AUC < 0.98 | **6 分** |
+| **极速** | AUC ≥ 0.98 且 Score ≤ P10 | **20 分** |
+| **优秀** | AUC ≥ 0.98 且 P10 < Score ≤ 2×P10 | **6 ~ 20 分** |
+| **普通** | AUC ≥ 0.98 且 Score > 2×P10 | **6 分** |
 
 #### 🧮 线性插值公式
 当你的速度处于 *优秀* 区间 ($P10 < Score \le 2 \times P10$) 时，得分计算如下：
@@ -120,7 +120,7 @@ $env:MAIN_CONTRIBUTOR="human"
 
 ### 3\. 运行评测
 
-==本次作业仅在水杉平台提交==
+**本次作业仅在水杉平台提交**
 
 ```bash
 chmod +x evaluate-linux
@@ -137,7 +137,7 @@ Testing...
 Training Time: 5.23s
 Testing Time:  0.45s
 Latency:   1.53s  <-- 计算方式：sqrt(5.23 * 0.45)
-ROC-AUC:       0.9950 <-- 必须 >= 0.99
+ROC-AUC:       0.9850 <-- 必须 >= 0.98
 ==================================================
 
 Submitting to leaderboard...
