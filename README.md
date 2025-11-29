@@ -68,7 +68,7 @@ $$\text{Latency} = \sqrt{\text{Training Time} \times \text{Testing Time}}$$
 | **4** | AUC ≥ 0.98 且 Latency > 4×P10 | **6 分** |
 
 #### 🧮 线性插值公式
-当你的速度处于 *2* 区间 ($P10 < Latency \le 2 \times P10$) 时，得分计算如下：
+当你的速度处于 *2* 区间 ($P10 < Latency \le 4 \times P10$) 时，得分计算如下：
 
 $$
 \text{Total Score} = 6 + 14 \times \left( 1 - \frac{\text{Latency} - P10}{P10} \right)
